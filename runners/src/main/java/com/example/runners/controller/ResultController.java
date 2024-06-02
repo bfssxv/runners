@@ -4,9 +4,8 @@ import com.example.runners.model.ResultEntity;
 import com.example.runners.repository.RaceRepository;
 import com.example.runners.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -17,4 +16,11 @@ public class ResultController {
 
     @GetMapping("/getAll")
     public List<ResultEntity>getAllResults(){return resultRepository.findAll();}
+
+    @PostMapping("/addResult")
+    public ResultEntity createResult(@RequestBody ResultEntity result) {
+        resultRepository.save(result);
+        return result;
+    }
+
 }

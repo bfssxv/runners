@@ -4,9 +4,8 @@ import com.example.runners.model.RunnerEntity;
 import com.example.runners.repository.RunnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -16,8 +15,13 @@ public class RunnerController {
     @Autowired
     RunnerRepository runnerRepository;
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllRunners")
     public List<RunnerEntity>getAllRunners(){return runnerRepository.findAll();}
 
+    @PostMapping("/addRunner")
+    public RunnerEntity createRunner(@RequestBody RunnerEntity runner) {
+        runnerRepository.save(runner);
+        return runner;
+    }
 
 }
