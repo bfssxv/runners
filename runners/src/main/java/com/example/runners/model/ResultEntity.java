@@ -12,6 +12,38 @@ public class ResultEntity {
 
     private long racesId;
     private double raceTime;
+
+    public long getResultId() {
+        return resultId;
+    }
+
+    public void setResultId(long resultId) {
+        this.resultId = resultId;
+    }
+
+    public long getContestantId() {
+        return contestantId;
+    }
+
+    public void setContestantId(long contestantId) {
+        this.contestantId = contestantId;
+    }
+
+    public long getRacesId() {
+        return racesId;
+    }
+
+    public void setRacesId(long racesId) {
+        this.racesId = racesId;
+    }
+
+    public double getRaceTime() {
+        return raceTime;
+    }
+
+    public void setRaceTime(double raceTime) {
+        this.raceTime = raceTime;
+    }
 }
 
 

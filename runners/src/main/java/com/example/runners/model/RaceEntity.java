@@ -13,4 +13,28 @@ public class RaceEntity {
     private String raceName;
 
     private float raceDistance;
+
+    public long getRaceId() {
+        return raceId;
+    }
+
+    public void setRaceId(long raceId) {
+        this.raceId = raceId;
+    }
+
+    public String getRaceName() {
+        return raceName;
+    }
+
+    public void setRaceName(String raceName) {
+        this.raceName = raceName;
+    }
+
+    public float getRaceDistance() {
+        return raceDistance;
+    }
+
+    public void setRaceDistance(float raceDistance) {
+        this.raceDistance = raceDistance;
+    }
 }
