@@ -1,76 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Runner</title>
+  <title>Add Runner</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
-  <h1 th:text="${runner.runnerName}"></h1>
-  <hr>
-  <table class="table">
-    <tbody>
-    <tr>
-      <th>Runner ID:</th>
-      <td th:text="${runner.runnerId}"></td>
-    </tr>
-    <tr>
-      <th>Average Pace:</th>
-      <td th:text="${runner.runnerName}"></td>
-    </tr>
-    <tr>
-      <th>Average Lap Time:</th>
-      <td th:text="${runner.runnerAge}"></td>
-    </tr>
-    <tr>
-      <th>Average Lap Time:</th>
-      <td th:text="${runner.runnerGender}"></td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <table class="table">
-          <thead>
-          <tr>
-            <th>Contestant</th>
-            <th>Lap Time</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="laptime : ${result.raceTime}">
-            <td align="right" th:text="${raceTime.contestantId}"></td>
+  <h1>Add New Runner</h1>
+  <form action="/runners/add" method="post">
+    <div class="form-group">
+      <label for="runnerName">Runner Name:</label>
+      <input type="text" class="form-control" id="runnerName" name="name" placeholder="Enter runner name">
+    </div>
+    <div class="form-group">
+      <label for="runnerAge">Runner Age:</label>
+      <input type= "number" class="form-control" id="runnerAge" name="age" placeholder="Enter runner age">
+    </div>
+    <div class="form-group">
+      <label for="runnerGender">Runner Gender:</label>
+      <input type="text" class="form-control" id="runnerGender" name="gender" placeholder="Enter runner gender">
+    </div>
+    <button type="submit" class="btn btn-success">Create Runner</button>
+  </form>
+  <a href="/runners" class="btn btn-info">Back to Runners</a>
 
-          </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <hr>
-  <a th:href="@{/runner/{id}(id=${runner.runnerId})}" class="btn btn-secondary">Add Runner</a>
-  <a href="/runners" class="btn btn-primary">Back to Home</a>
-</div>
 </body>
-<h2>Add New Runner</h2>
-<form th:action="@{/api/runners/addRunner}" method="post">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" class="form-control" id="name" name="runnerName" required>
-  </div>
-  <div class="form-group">
-    <label for="age">Age:</label>
-    <input type="number" class="form-control" id="age" name="runnerAge" required>
-  </div>
-  <div class="form-group">
-    <label for="gender">Gender:</label>
-    <select class="form-control" id="gender" name="runnerGender" required>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-
 </html>

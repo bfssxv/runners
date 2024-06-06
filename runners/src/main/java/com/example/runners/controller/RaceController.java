@@ -14,13 +14,13 @@ public class RaceController {
     @Autowired
     RaceRepository raceRepository;
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllRaces")
     public List<RaceEntity> getAllRaces() {
         return raceRepository.findAll();
     }
 
     @PostMapping("/addRace")
-    public RaceEntity createRace(@RequestBody RaceEntity race) {
+    public RaceEntity addRace(@RequestBody RaceEntity race) {
         raceRepository.save(race);
         return race;
     }

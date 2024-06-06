@@ -14,7 +14,7 @@ public class ResultController {
     @Autowired
     ResultRepository resultRepository;
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllResults")
     public List<ResultEntity>getAllResults(){return resultRepository.findAll();}
 
     @PostMapping("/addResult")

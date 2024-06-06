@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Runners</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-$END$
+<h1>Runner List</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Runner ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="runner : ${runners}">
+        <td th:text="${runner.runnerId}"></td>
+        <td th:text="${runner.runnerName}"></td>
+        <td th:text="${runner.runnerAge}"></td>
+        <td th:text="${runner.runnerGender}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/addRunnerForm" class="btn btn-success">Add New Runner</a>
 </body>
 </html>
+
+
+

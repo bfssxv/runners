@@ -1,10 +1,10 @@
 package com.example.runners.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.util.Set;
+
 @Entity
 public class RaceEntity {
     @Id
@@ -12,7 +12,10 @@ public class RaceEntity {
     public long raceId;
     private String raceName;
 
-    private float raceDistance;
+    private double raceDistance;
+
+    @OneToMany(mappedBy = "race")
+    private Set<ResultEntity> results;
 
     public long getRaceId() {
         return raceId;
@@ -30,11 +33,19 @@ public class RaceEntity {
         this.raceName = raceName;
     }
 
-    public float getRaceDistance() {
+    public double getRaceDistance() {
         return raceDistance;
     }
 
-    public void setRaceDistance(float raceDistance) {
+    public void setRaceDistance(double raceDistance) {
         this.raceDistance = raceDistance;
+    }
+
+    public Set<ResultEntity> getResults() {
+        return results;
+    }
+
+    public void setResults(Set<ResultEntity> results) {
+        this.results = results;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.runners.controller;
 
-import com.example.runners.model.RunnerEntity;
+import com.example.runners.model.RaceEntity;
+import com.example.runners.repository.RaceRepository;
 import com.example.runners.repository.RunnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,26 +17,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @Controller
-public class RunnerWebController {
+public class RaceWebController {
 
     @Autowired
-    RunnerRepository runnerRepository;
+    RaceRepository raceRepository;
 
-    @GetMapping("/runners")
+    @GetMapping("/getAllRaces")
     public String listRunnerEntity(Model model) {
-        model.addAttribute("runners", runnerRepository.findAll());
-        model.addAttribute("runner", new RunnerEntity());
+        model.addAttribute("runners", raceRepository.findAll());
+        model.addAttribute("runner", new RaceEntity());
         return "runners";
     }
-    @GetMapping("/addRunnerForm")
+    @GetMapping("/addRace")
     public String showAddRunnerForm() {
-        return "addRunnerForm";
+        return "addRaceForm";
     }
 
-    @PostMapping("/runners/add")
-        public String addRunner(@ModelAttribute RunnerEntity runner) {
-            runnerRepository.save(runner);
-            return "redirect:/runners";
+    @PostMapping("/races/add")
+    public String addRace(@ModelAttribute RaceEntity race) {
+        raceRepository.save(race);
+        return "redirect:/races";
 
     }
 

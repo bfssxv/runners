@@ -19,7 +19,7 @@ public class RunnerController {
     public List<RunnerEntity>getAllRunners(){return runnerRepository.findAll();}
 
     @PostMapping("/addRunner")
-    public RunnerEntity createRunner(@RequestBody RunnerEntity runner) {
+    public RunnerEntity addRunner(@RequestBody RunnerEntity runner) {
         runnerRepository.save(runner);
         return runner;
     }

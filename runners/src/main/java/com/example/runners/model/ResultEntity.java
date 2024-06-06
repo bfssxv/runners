@@ -8,9 +8,12 @@ public class ResultEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long resultId;
-    public long contestantId;
-
-    private long racesId;
+    @ManyToOne
+    @JoinColumn(name = "runner_id", nullable = false)
+    private RunnerEntity runner;
+    @ManyToOne
+    @JoinColumn(name = "race_id", nullable = false)
+    private RaceEntity race;
     private double raceTime;
 
     public long getResultId() {
@@ -21,20 +24,20 @@ public class ResultEntity {
         this.resultId = resultId;
     }
 
-    public long getContestantId() {
-        return contestantId;
+    public RunnerEntity getRunner() {
+        return runner;
     }
 
-    public void setContestantId(long contestantId) {
-        this.contestantId = contestantId;
+    public void setRunner(RunnerEntity runner) {
+        this.runner = runner;
     }
 
-    public long getRacesId() {
-        return racesId;
+    public RaceEntity getRace() {
+        return race;
     }
 
-    public void setRacesId(long racesId) {
-        this.racesId = racesId;
+    public void setRace(RaceEntity race) {
+        this.race = race;
     }
 
     public double getRaceTime() {
@@ -45,5 +48,4 @@ public class ResultEntity {
         this.raceTime = raceTime;
     }
 }
-
 
