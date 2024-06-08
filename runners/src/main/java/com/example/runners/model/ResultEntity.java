@@ -1,8 +1,5 @@
 package com.example.runners.model;
 import jakarta.persistence.*;
-import jakarta.persistence.Entity;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 @Entity
 public class ResultEntity {
     @Id
@@ -46,6 +43,12 @@ public class ResultEntity {
 
     public void setRaceTime(double raceTime) {
         this.raceTime = raceTime;
+    }
+
+    public void setRaceTime() {
+    }
+
+    public void setRunnerId() {
     }
 }
 

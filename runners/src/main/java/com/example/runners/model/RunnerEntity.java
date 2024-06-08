@@ -1,9 +1,7 @@
 package com.example.runners.model;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class RunnerEntity {
@@ -14,8 +12,8 @@ public class RunnerEntity {
     private int runnerAge;
     private String runnerGender;
 
-    @OneToMany(mappedBy = "runner")
-    private Set<ResultEntity> results;
+    @OneToMany(mappedBy = "runner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ResultEntity> results;
 
     public long getRunnerId() {
         return runnerId;
@@ -49,11 +47,11 @@ public class RunnerEntity {
         this.runnerGender = runnerGender;
     }
 
-    public Set<ResultEntity> getResults() {
+    public List<ResultEntity> getResults() {
         return results;
     }
 
-    public void setResults(Set<ResultEntity> results) {
+    public void setResults(List<ResultEntity> results) {
         this.results = results;
     }
 }

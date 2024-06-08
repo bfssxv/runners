@@ -1,9 +1,7 @@
 package com.example.runners.model;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class RaceEntity {
@@ -14,8 +12,8 @@ public class RaceEntity {
 
     private double raceDistance;
 
-    @OneToMany(mappedBy = "race")
-    private Set<ResultEntity> results;
+    @OneToMany(mappedBy = "race", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ResultEntity> results;
 
     public long getRaceId() {
         return raceId;
@@ -41,11 +39,11 @@ public class RaceEntity {
         this.raceDistance = raceDistance;
     }
 
-    public Set<ResultEntity> getResults() {
+    public List<ResultEntity> getResults() {
         return results;
     }
 
-    public void setResults(Set<ResultEntity> results) {
+    public void setResults(List<ResultEntity> results) {
         this.results = results;
     }
 }
